@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      /* All Your css for Home page goes here  */
+      .nav {
+        height: 10vh;
+
+        background-color: transparent;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .nav a {
+        color: whitesmoke;
+        text-decoration: none;
+        font-size: 35px;
+      }
+      .nav h1 {
+        color: white;
+      }
+      #menu-container {
+        margin: auto;
+        height: auto;
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(auto, 200px);
+        gap: 15px;
+      }
+      #menu-container > div {
+        /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+          rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        padding: 10px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        background-image: url("./coffeShop2.avif");
+        height: 100vh;
+        background-repeat: no-repeat;
+        /* border: 1px solid red; */
+        background-size: 100vw;
+        color: white;
+        border-radius: 10px;
+      }
+
+      #menu-container > div > img {
+        height: 50%;
+        width: 100%;
+      }
+      #menu-container > div > button {
+        margin: auto;
+        background-color: #aebdb4;
+        color: white;
+        height: 40px;
+        width: 100px;
+        font-size: 20px;
+        border-radius: 10px;
+        border: none;
+      }
+      #sort {
+        height: 40px;
+        width: 140px;
+        border-radius: 5px;
+      }
+
+      body {
+        background-image: url("./coffeShop4.avif");
+        height: 100vh;
+        /* background-repeat: no-repeat; */
+        /* border: 1px solid red; */
+        background-size: 120vw;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="nav">
+      <h1>ABOUT</h1>
+      <a href="./index.html">HOME</a>
+      <a href="./order.html">ORDERED</a>
+      <select id="sort" onchange="handleCahnge()">
+        <option value="">SORT BY PRICE</option>
+        <option value="asc">ASCENDING</option>
+        <option value="desc">DESCENDING</option>
+      </select>
+    </div>
+
+    <h1 id="alert"></h1>
+    <div id="menu-container">
+      <!-- Here Append All the Items  -->
+    </div>
+  </body>
+  <script>
+    // All your JS code for Home Page goes here
+    // const url = `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee`;
+    let cartInfo = JSON.parse(localStorage.getItem("buy")) || [];
+
+    async function getdata() {
+      let res = await fetch(
+        "https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee"
+      );
+      let data = await res.json();
+      append(data.data);
+    }
+
+    getdata();
+
+    function append(data) {
+      let conti = document.getElementById("menu-container");
+      conti.innerHTML = null;
+      data.forEach((elem) => {
+        let daba = document.createElement("div");
+
+        let pic = document.createElement("img");
+        pic.src = elem.image;
+
+        let title = document.createElement("h1");
+        title.innerText = elem.title;
+
+        let p = document.createElement("p");
+        p.innerText = elem.ingredients;
+
+        let desc = document.createElement("p");
+        desc.innerText = elem.description;
+
+        let rate = document.createElement("p");
+        rate.innerText = `Rs:${elem.price}`;
+
+        let btn = document.createElement("button");
+        btn.innerText = "Buy";
+        btn.addEventListener("click", function () {
+          if (cartInfo.indexOf(elem) !== -1) {
+            alert("Already Placed Order");
+          } else {
+            elem.quantity = 1;
+            elem.totalPrice = elem.price * elem.quantity;
+            cartInfo.push(elem);
+            localStorage.setItem("buy", JSON.stringify(cartInfo));
+            alert("Successfully Placed Order");
+          }
+        });
+
+        daba.append(pic, title, p, desc, rate, btn);
+        conti.append(daba);
+      });
+    }
+
+    async function handleCahnge() {
+      var handle = document.getElementById("sort").value;
+      if (handle == "asc") {
+        let res = await fetch(
+          "https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee?sort=price&order=asc"
+        );
+        let data = await res.json();
+        append(data.data);
+      }
+      if (handle == "desc") {
+        let res = await fetch(
+          "https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-coffee?sort=price&order=desc"
+        );
+        let data = await res.json();
+        append(data.data);
+      }
+    }
+  </script>
+</html>

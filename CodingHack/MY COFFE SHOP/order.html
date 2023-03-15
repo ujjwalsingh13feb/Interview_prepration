@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Page</title>
+    <style>
+      /* All Your css for Order page goes here  */
+
+      .nav {
+        height: 100px;
+        border: 1px solid red;
+        background-color: teal;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 35px;
+      }
+      .nav h1 {
+        color: white;
+      }
+      #order-container {
+        margin: auto;
+        height: auto;
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(auto, 200px);
+        gap: 20px;
+      }
+      #order-container > div {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        padding: 10px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #order-container > div > img {
+        height: 50%;
+        width: 100%;
+      }
+      #order-container > div > button {
+        margin: auto;
+        background-color: black;
+        color: white;
+        height: 40px;
+        width: 100px;
+        font-size: 20px;
+        border-radius: 10px;
+        border: none;
+        margin: 5px;
+      }
+      .buttn button {
+        margin: auto;
+        background-color: teal;
+        color: white;
+        height: 40px;
+        width: 60px;
+        font-size: 15px;
+        border-radius: 10px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <h1>Web Coffee Shop Menu</h1>
+      <a href="./index.html">Home</a>
+      <a href="./order.html">Ordered</a>
+    </div>
+    <h1 id="total">
+      Your total order value is :- <span id="order-total">0</span>
+    </h1>
+    <div id="cupon">
+      <input type="text" id="cuponhai" />
+      <button onclick="handlecopu()">Add Cupon</button>
+    </div>
+    <div id="order-container">
+      <!-- Here Append All the Order Cards here-->
+    </div>
+  </body>
+  <script>
+    // All your JS code for Order Page goes here
+    let datacart = JSON.parse(localStorage.getItem("buy")) || [];
+  
+
+    let totalValue = 0;
+    datacart.forEach(function (el) {
+      totalValue += el.totalPrice;
+    });
+    document.getElementById("order-total").innerText = totalValue.toFixed(2);
+function handlecopu(){
+  let disc=document.querySelector("#cuponhai").value
+  console.log(disc)
+  if(disc=="Masai30"){
+   let total=(totalValue*70)/100;
+   document.getElementById("order-total").innerText=total
+  }else if(disc=="Masai30"){
+    alert("INvalid Coupoun")
+  }
+}
+
+
+
+function appendcart(datacart){
+  let conti = document.getElementById("order-container");
+  conti.innerHTML = null;
+ 
+  datacart.forEach((elem,index) => {
+
+    let dibba = document.createElement("div");
+
+let phtot = document.createElement("img");
+phtot.src = elem.image;
+
+let title = document.createElement("h1");
+title.innerText = elem.title;
+
+let ingr = document.createElement("p");
+ingr.innerText = elem.ingredients;
+
+let desc = document.createElement("p");
+desc.innerText = elem.description;
+
+let rate = document.createElement("p");
+rate.innerText = `Rs:${elem.price}`;
+
+let buttns = document.createElement("div");
+buttns.setAttribute("class", "buttn");
+
+//  Increase Quantity FUnctionality
+
+let incr = document.createElement("button");
+incr.innerText = "+";
+incr.addEventListener("click", function () {
+  elem.quantity++;
+  quan.innerText = elem.quantity;
+  elem.totalPrice = elem.price * elem.quantity;
+  document.getElementById("order-total").innerText = totalValue;
+  localStorage.setItem("buy", JSON.stringify(datacart));
+  window.location.reload();
+});
+
+//  Quantity Showing Functionality
+
+let quan = document.createElement("p");
+quan.innerText = elem.quantity;
+
+//  Decrease Quantity FUnctionality
+let decr = document.createElement("button");
+decr.innerText = "-";
+decr.addEventListener("click",function(){
+  elem.quantity--;
+  if(elem.quantity===-1){
+    alert("it cnnot be negative");
+  }
+  quan.innerText=elem.quantity;
+  elem.totalPrice=elem.price*elem.quantity;
+  document.getElementById("order-total").innerText = totalValue;
+  localStorage.setItem("buy", JSON.stringify(datacart));
+  window.location.reload();
+
+
+})
+
+//  Delete Product Functionality
+
+let del = document.createElement("button");
+del.innerText = "Cancel";
+del.addEventListener("click",()=>{
+  datacart.splice(index,1);
+  localStorage.setItem("buy",JSON.stringify(datacart))
+  let carthai=JSON.parse(localStorage.getItem("buy")) ||[];
+  appendcart(carthai);
+})
+
+buttns.append(incr, quan, decr, del);
+dibba.append(phtot, title, ingr, desc, rate, buttns);
+conti.append(dibba);
+});
+}
+
+
+appendcart(datacart)
+
+
+
+  </script>
+</html>
