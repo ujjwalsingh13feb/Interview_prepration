@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Page</title>
+    <style>
+      /* All Your css for Order page goes here  */
+
+      .nav {
+        height: 100px;
+        background-color: transparent;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 35px;
+      }
+      .nav h1 {
+        color: white;
+      }
+      #order-container {
+        margin: auto;
+        height: auto;
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(auto, 200px);
+        gap: 20px;
+      }
+      #order-container > div {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        padding: 10px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+
+        background-image: url("../assets/coffeShop2.avif");
+    height: 100vh;
+    background-repeat: no-repeat;
+    /* border: 1px solid red; */
+    background-size: 100vw;
+    color: white;
+    border-radius: 10px;
+      }
+
+      #order-container > div > img {
+        height: 50%;
+        width: 100%;
+      }
+      #order-container > div > button {
+        margin: auto;
+        background-color: black;
+        color: white;
+        height: 40px;
+        width: 100px;
+        font-size: 20px;
+        border-radius: 10px;
+        border: none;
+        margin: 5px;
+      }
+      .buttn button {
+        margin: auto;
+        background-color: teal;
+        color: white;
+        height: 40px;
+        width: 60px;
+        font-size: 15px;
+        border-radius: 10px;
+        border: none;
+      }
+
+      body {
+    background-image: url("../assets/coffeeShop6.avif");
+    height: 100vh;
+    /* background-repeat: no-repeat; */
+    /* border: 1px solid red; */
+    background-size: 120vw;
+  }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <h1>ABOUT</h1>
+      <a href="./index.html">HOME</a>
+      <a href="./order.html">ORDERED</a>
+      <h1 id="total">
+        TOTAL ORDER  :- <span id="order-total">0</span>
+      </h1>
+    </div>
+    
+    <!-- <div id="cupon">
+      <input type="text" id="cuponhai" />
+      <button onclick="handlecopu()">ADD CUPON</button>
+    </div> -->
+    <div id="order-container">
+      <!-- Here Append All the Order Cards here-->
+    </div>
+  </body>
+  <script>
+    // All your JS code for Order Page goes here
+    let datacart = JSON.parse(localStorage.getItem("buy")) || [];
+
+    let totalValue = 0;
+    datacart.forEach(function (el) {
+      totalValue += el.totalPrice;
+    });
+    document.getElementById("order-total").innerText = totalValue.toFixed(2);
+    function handlecopu() {
+      let disc = document.querySelector("#cuponhai").value;
+      console.log(disc);
+      if (disc == "COFFEE20") {
+        let total = (totalValue * 70) / 100;
+        document.getElementById("order-total").innerText = total;
+      } else {
+        alert("INVALID COUPOUN");
+      }
+    }
+
+    function appendcart(datacart) {
+      let conti = document.getElementById("order-container");
+      conti.innerHTML = null;
+
+      datacart.forEach((elem, index) => {
+        let dibba = document.createElement("div");
+
+        let phtot = document.createElement("img");
+        phtot.src = elem.image;
+
+        let title = document.createElement("h1");
+        title.innerText = elem.title;
+
+        let ingr = document.createElement("p");
+        ingr.innerText = elem.ingredients;
+
+        
+
+        let rate = document.createElement("p");
+        rate.innerText = `Rs:${elem.price}`;
+
+        let buttns = document.createElement("div");
+        buttns.setAttribute("class", "buttn");
+
+        //  Increase Quantity FUnctionality
+
+        let incr = document.createElement("button");
+        incr.innerText = "+";
+        incr.addEventListener("click", function () {
+          elem.quantity++;
+          quan.innerText = elem.quantity;
+          elem.totalPrice = elem.price * elem.quantity;
+          document.getElementById("order-total").innerText = totalValue;
+          localStorage.setItem("buy", JSON.stringify(datacart));
+          window.location.reload();
+        });
+
+        //  Quantity Showing Functionality
+
+        let quan = document.createElement("p");
+        quan.innerText = elem.quantity;
+
+        //  Decrease Quantity FUnctionality
+        let decr = document.createElement("button");
+        decr.innerText = "-";
+        decr.addEventListener("click", function () {
+          elem.quantity--;
+          if (elem.quantity === -1) {
+            alert("it cnnot be negative");
+          }
+          quan.innerText = elem.quantity;
+          elem.totalPrice = elem.price * elem.quantity;
+          document.getElementById("order-total").innerText = totalValue;
+          localStorage.setItem("buy", JSON.stringify(datacart));
+          window.location.reload();
+        });
+
+        //  Delete Product Functionality
+
+        let del = document.createElement("button");
+        del.innerText = "Cancel";
+        del.addEventListener("click", () => {
+          datacart.splice(index, 1);
+          localStorage.setItem("buy", JSON.stringify(datacart));
+          let carthai = JSON.parse(localStorage.getItem("buy")) || [];
+          appendcart(carthai);
+        });
+
+        buttns.append(incr, quan, decr, del);
+        dibba.append(phtot, title, ingr,  rate, buttns);
+        conti.append(dibba);
+      });
+    }
+
+    appendcart(datacart);
+  </script>
+</html>

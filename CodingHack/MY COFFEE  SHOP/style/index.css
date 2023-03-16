@@ -1,0 +1,70 @@
+  /* All Your css for Home page goes here  */
+  .nav {
+    height: 10vh;
+
+    background-color: transparent;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .nav a {
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: 35px;
+  }
+  .nav h1 {
+    color: white;
+  }
+  #menu-container {
+    margin: auto;
+    height: auto;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(auto, 200px);
+    gap: 15px;
+  }
+  #menu-container > div {
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    padding: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-image: url("../assets/coffeShop2.avif");
+    height: 100vh;
+    background-repeat: no-repeat;
+    /* border: 1px solid red; */
+    background-size: 100vw;
+    color: white;
+    border-radius: 10px;
+  }
+
+  #menu-container > div > img {
+    height: 50%;
+    width: 100%;
+  }
+  #menu-container > div > button {
+    margin: auto;
+    background-color: #aebdb4;
+    color: white;
+    height: 40px;
+    width: 100px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+  }
+  #sort {
+    height: 40px;
+    width: 140px;
+    border-radius: 5px;
+  }
+
+  body {
+    background-image: url("../assets/coffeShop4.avif");
+    height: 100vh;
+    /* background-repeat: no-repeat; */
+    /* border: 1px solid red; */
+    background-size: 120vw;
+  }
