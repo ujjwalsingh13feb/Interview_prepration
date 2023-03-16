@@ -1,3 +1,8 @@
+// What is a string in code ?
+//     In any computer programming language, a string is a sequence of 
+//     characters used to represent text.In JavaScript, a String is one
+//      of the primitive values.
+
 
 // String length
 // String slice()
