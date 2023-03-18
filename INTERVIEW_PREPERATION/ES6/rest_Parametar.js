@@ -27,3 +27,15 @@ function addition(...rest){
 }
 let arr = addition(1,2,3,4,5,6)
 console.log(arr)
+
+
+/// some concept here
+function fun(a,b,...c){
+    console. log (`${a} ${b}`);
+    console.log (c) 
+    console.log (c[0]);
+    console. log (c.length) ;
+    console. log (c.indexOf ( "Edan"))
+    
+}
+    fun( 'Ronaldo', 'Neymar','Pele','Messi', 'Edan');
