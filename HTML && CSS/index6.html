@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>what is onload event?</title>
+</head>
+<body>
+    <h1>what is onload event?</h1>
+    <h1>
+        The onload event occurs when an object has been loaded.
+         onload is most often used within the <body> element to 
+            execute a script once a web page has completely loaded
+             all content (including images, script files, CSS files, etc.).
+    </h1>
+
+
+    <!-- example -->
+
+    <h1>HTML DOM Events</h1>
+<h2>The onload Event</h2>
+
+<p>Assign an "onload" event to an iframe element.</p>
+
+<iframe onload="myFunction()" src="/default.asp"></iframe>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Iframe is loaded.";
+}
+</script>
+</body>
+</html>
