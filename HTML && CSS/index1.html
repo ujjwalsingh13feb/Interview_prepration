@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <h1>What are forms in HTML?</h1>
+      <h2>In HTML, forms are used to collect user input and send 
+        it to a server for processing. A form typically contains 
+        input fields, such as text boxes, radio buttons, checkboxes, 
+        and drop-down lists, where users can enter or select information.
+
+        The `<form>`tag is used to define a form, 
+            and the action attribute specifies the URL 
+            of the script or program that will process 
+            the form data. The method attribute specifies 
+            the HTTP method to use when submitting the form 
+            data, either GET or POST</h2>
+
+
+            <p>For example, a simple login form might look like this:</p>
+
+            <form action="/login" method="post">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+              
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+              
+                <button type="submit">Log in</button>
+              </form>
+              
+</body>
+</html>
