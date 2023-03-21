@@ -163,3 +163,105 @@
 // var ujjwal;
 
 // console.log(ujjwal);
+
+// console.log(name)
+// var name = "ujjwal";
+
+
+// var arr = [1,2,3,4,5]
+
+
+
+// console.log(arr.map(a=>a*5))
+
+
+// function getName(){
+//     var status = true;
+
+//     if(status){
+//         var name ='masai'
+//     }
+
+//     console.log(name);
+// }
+
+// getName()
+
+// console.log([1] === [1])
+
+// What is the difference between LHS lookup and RHS lookup
+// LHS looks for the existence of a variable whereas RHS looks for the history of that variable
+// Both looks for variables and then values
+// LHS looks for the variable container whereas RHS looks for the value of the variable (write option)
+// LHS looks for assignment operator whereas RHS looks for the value to be assigned
+
+
+// What is the output?
+
+
+// function cont(x){
+//     var y = x*10;
+//     function val(z){
+//         console.log(x, y,z);
+//     }
+
+//     val(y*5)
+// }
+// cont(3)
+
+// undefined undefined undefined
+// undefined 30 150
+// Refernce Error
+// undefined undefined 150
+// 3 30 150
+// Other:
+
+// How does Javascript engine handle collision of module imports?
+// ES6 has inbuilt methods
+// global scoping
+// each of the modules are wrapped in an IIFE (write option)
+// There wont be collisions when importing modules
+
+// console.log(typeof [])
+
+
+// What is the output?
+// function alpha(){
+//     var  x =100;
+//     this.beta()
+// }
+
+// function beta(){
+//     var x=200;
+//     console.log(this.x)
+
+// }
+
+// alpha()
+// undefined
+// ReferenceError
+// 100
+// 200
+// null
+
+
+// What is the output?
+
+// var name = "Ajay";
+// function personDetails(){
+//     console.log(this.name)
+// }
+
+// var person ={
+//     name : "Haren",
+//     company:"masai",
+//     print:personDetails()
+// }
+
+// person.print()
+
+// Ajay
+// Haren
+// ReferenceError
+// SyntaxError
+// TypeError
