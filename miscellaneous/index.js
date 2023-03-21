@@ -145,13 +145,21 @@
 // Which of the following is an implicit coercion?
 
 
-var prod= "10"*5; //   this is implicit coercion 
-console.log(prod)
+// var prod= "10"*5; //   this is implicit coercion 
+// console.log(prod)
 
-var join = "Hello " +5 +"th person"
-console.log(join)
+// var join = "Hello " +5 +"th person"
+// console.log(join)
 
-var b = String( 1024)
-console.log(b)
+// var b = String( 1024)
+// console.log(b)
 
 
+// const arr = ["ujjwal","singh","chintu"]
+
+// arr[0]="gyan";
+// console.log(arr)
+
+// var ujjwal;
+
+// console.log(ujjwal);
