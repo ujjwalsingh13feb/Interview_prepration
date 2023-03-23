@@ -281,3 +281,44 @@
 //     // Return the reversed number (negating it if the original number was negative)
 //     return num < 0 ? -Math.abs(reversedNumber) : reversedNumber;
 // };
+
+
+// function value(b){
+//     const a=100;
+//     a=b;
+//     return a
+// }
+
+// console.log(value(100))
+
+// let fName="ujjwal";
+// let LName="Singh";
+
+// let person = {fName,LName}
+// console.log(person)
+
+
+// var arr = [1,2,3,4,5]
+
+// console.log(arr.map(a->a*5))
+
+// function (a=100){...}
+
+
+// for...in loops iterates over the specified object
+
+// Yes, that's correct. In JavaScript, the for...in loop is
+//  used to iterate over the enumerable properties of an object,
+//   including its own properties and any properties inherited 
+//   from its prototype chain.
+
+// const person = {
+//     name: "John",
+//     age: 30,
+//     gender: "male"
+//   };
+  
+//   for (const key in person) {
+//     console.log(`${key}: ${person[key]}`);
+//   }
+
