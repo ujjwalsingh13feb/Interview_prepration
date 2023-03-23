@@ -2,6 +2,8 @@
 
 ## https://www.linkedin.com/feed/update/urn:li:activity:7041705206702563328/ (link of HR on linkedin)
 
+## harry Notes(https://drive.google.com/drive/folders/1RcyvvOAxJtNc_mPLt9g-kTHIMUZ3uD8z)
+
 1.CSS (Flexbox)
 2.Arrow Function
 3.LinkedList

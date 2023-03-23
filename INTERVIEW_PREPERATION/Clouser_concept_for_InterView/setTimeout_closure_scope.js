@@ -46,3 +46,7 @@ for(var  i=0;i<arr.length;i++){
 //async,for loops
 // call / apply,bind
 //arrow function
+
+// also explore the below things
+ //connect in redux
+ //hooks
