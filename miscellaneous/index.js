@@ -322,3 +322,19 @@
 //     console.log(`${key}: ${person[key]}`);
 //   }
 
+// What is Redux?
+// A tool for managing state in React
+// A predictable state container for JavaScript apps.
+// Redux is a package that manages Reacts core technology
+// // None of the above
+
+// what is the output
+
+const prod =(x)=>{
+    x=x+5;
+    return inner =>(
+        x * inner
+    )
+}
+
+prod (5)(10)
