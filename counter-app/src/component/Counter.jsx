@@ -20,7 +20,7 @@ export const Counter = () => {
 
   return (
     <>
-      <h1>Counter-App</h1>
+      <h1>COUNTER</h1>
       <div className="counter-main">
         <div className="counter">
             <h1 className="show">{count}</h1>
