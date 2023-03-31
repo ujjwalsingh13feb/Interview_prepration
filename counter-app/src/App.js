@@ -1,11 +1,11 @@
 
 import './App.css';
 
-// import Newcounter from './component/Newcounter';
-import StopWatch from './component/StopWatch';
-import Counter from './component/Counter';
-import Navbar from './component/Navbar';
 
+// import StopWatch from './component/StopWatch';
+// import Counter from './component/Counter';
+// import Navbar from './component/Navbar';
+import Stopwatch1 from './component/Stopwatch1';
 
 
 
@@ -13,13 +13,15 @@ function App() {
   return (
     <div className="App">
    
-
+{/* 
      <Navbar/>
      
      
       <Counter/>
-      {/* <Newcounter/> */}
-      <StopWatch/> 
+    
+      <StopWatch/>  */}
+
+      <Stopwatch1 />
     </div>
   );
 }
