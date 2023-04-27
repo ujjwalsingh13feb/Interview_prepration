@@ -13,15 +13,15 @@ function App() {
   return (
     <div className="App">
    
-{/* 
-     <Navbar/>
-     
-     
-      <Counter/>
-    
-      <StopWatch/>  */}
 
-      <Stopwatch1 />
+     {/* <Navbar/> */}
+     
+     
+      {/* <Counter/> */}
+{/*     
+      <StopWatch/>   */}
+
+      {/* <Stopwatch1 />  */}
     </div>
   );
 }
